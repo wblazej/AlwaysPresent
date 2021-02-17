@@ -19,10 +19,12 @@ class help(commands.Cog):
         {"arg": "--help", "description": Config.HELP_ARGUMENT_DESCRIPTION}
     ]
     description = Config.HELP_COMMAND_DESCRIPTION
+    example = None
 
     @commands.command(name=command, aliases=aliases)
     async def _help(self, ctx, *args):
         args = parse_args(args)
+        print(args)
 
         if args.get("help") or args.get("h"):
             await command_help(ctx, help)

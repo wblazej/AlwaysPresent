@@ -5,7 +5,8 @@ async def command_help(ctx, command_class):
     embed = discord.Embed()
     embed.color = Config.MAIN_COLOR
     embed.title = f"**{Config.PREFIX}{command_class.command}**"
-    embed.add_field(name=Config.TRANSLATION_DESCRIPTION, value=command_class.description.capitalize(), inline=True)
+    v = f"{command_class.description[:1].upper()}{command_class.description[1:]}"
+    embed.add_field(name=Config.TRANSLATION_DESCRIPTION, value=v, inline=True)
     embed.set_thumbnail(url=Config.INFO_ICON)
 
     if len(command_class.aliases) > 0:
@@ -21,6 +22,9 @@ async def command_help(ctx, command_class):
         for arg in command_class.arguments:
             arguments_content += f"**{arg['arg']}** - {arg['description']}\n"
         embed.add_field(name=Config.TRANSLATION_ARGUMENTS, value=arguments_content, inline=False)
+
+    if command_class.example:
+        embed.add_field(name=Config.TRANSLATION_EXAMPLE, value=command_class.example, inline=False)
 
 
     await ctx.send(embed=embed)

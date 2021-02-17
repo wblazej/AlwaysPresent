@@ -19,6 +19,7 @@ class invitation(commands.Cog):
         {"arg": "--help", "description": Config.HELP_ARGUMENT_DESCRIPTION}
     ]
     description = Config.INVITATION_COMMAND_DESCRIPTION
+    example = None
 
     @commands.command(name=command, aliases=aliases)
     async def _invite(self, ctx, *args):
