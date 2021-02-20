@@ -9,7 +9,6 @@ from lib.config import Config
 from lib.error import send_error
 from lib.questionnaire import Questionnaire
 
-# variable that stores all data about questions
 questionnaires = dict()
 
 class question(commands.Cog):
@@ -80,7 +79,7 @@ class question(commands.Cog):
 
         content += Config.CHOOSE_ANSWER
 
-        await ctx.message.delete()
+        # await ctx.message.delete()
 
         embed = discord.Embed()
         embed.color = Config.MAIN_COLOR
@@ -88,8 +87,8 @@ class question(commands.Cog):
         embed.description = content
         msg = await ctx.send(embed=embed)
 
-        result_msg = await ctx.send(question.generate_result_content([0]*len(answers)))
-        questionnaires[msg.id] = Questionnaire(__question, answers, [0]*len(answers), ctx.channel.id, result_msg.id)
+        result_msg = await ctx.send(self.generate_result_content([0]*len(answers)))
+        questionnaires[msg.id] = Questionnaire([0]*len(answers), ctx.channel.id, result_msg.id)
 
         for i in range(len(answers)):
             await msg.add_reaction(DiscordEmojis.numbers_unicode[i])
@@ -97,58 +96,46 @@ class question(commands.Cog):
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
-        if user.bot:
-            return
-
-        msg_id = reaction.message.id
-
-        stop = False
-        if msg_id in questions.keys():
-            try:
-                questions[msg_id]['answers_count'][int(reaction.emoji[:1]) - 1] += 1
-            except ValueError:
-                await reaction.remove(user)
-                stop = True
-
-            if stop == False and questions[msg_id].get('result_msg_id') != None:
-                new_msg_content = question.generate_result_content(questions[msg_id]['answers_count'])
-
-                channel = self.bot.get_channel(questions[msg_id]['channel_id'])
-                msg = await channel.fetch_message(questions[msg_id]['result_msg_id'])
-                await msg.edit(content=new_msg_content)
+        await self.vote_changed(reaction=reaction, user=user, status="add")
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):
+        await self.vote_changed(reaction=reaction, user=user, status="remove")
+
+    async def vote_changed(self, reaction, user, status):
         if user.bot:
             return
 
         msg_id = reaction.message.id
 
-        stop = False
-        if msg_id in questions.keys():
+        if msg_id in questionnaires.keys():
             try:
-                questions[msg_id]['answers_count'][int(reaction.emoji[:1]) - 1] -= 1
+                if status == "add":
+                    questionnaires[msg_id].answers_count[int(reaction.emoji[:1]) - 1] += 1
+                elif status == "remove":
+                    questionnaires[msg_id].answers_count[int(reaction.emoji[:1]) - 1] -= 1
+
+                new_msg_content = self.generate_result_content(questionnaires[msg_id].answers_count)
+
+                channel = self.bot.get_channel(questionnaires[msg_id].channel_id)
+                msg = await channel.fetch_message(questionnaires[msg_id].result_msg_id)
+                await msg.edit(content=new_msg_content)
             except ValueError:
                 await reaction.remove(user)
-                stop = True
 
-            if stop == False and questions[msg_id].get('result_msg_id') != None:
-                new_msg_content = question.generate_result_content(questions[msg_id]['answers_count'])
-
-                channel = self.bot.get_channel(questions[msg_id]['channel_id'])
-                msg = await channel.fetch_message(questions[msg_id]['result_msg_id'])
-                await msg.edit(content=new_msg_content)
-
-    def generate_result_content(answers_count):
-        all_answers = sum(answers_count)
-        content = f'**Odpowiedzi: {all_answers}**\n'
+    def generate_result_content(self, answers_count):
+        content = f'**Odpowiedzi: {sum(answers_count)}**\n'
 
         for i in range(len(answers_count)):
             content += f'{DiscordEmojis.numbers[i]} '
-            if all_answers > 0:
-                persentage = round(answers_count[i] / all_answers * 100, 2)
-            else: persentage = 0
+
+            try:
+                persentage = round(answers_count[i] / sum(answers_count) * 100, 2)
+            except ZeroDivisionError:
+                persentage = 0
+
             blocks = round(persentage / 10)
+
             for _ in range(blocks):
                 content += '▉'
             content += f' **{persentage}%**\n'
