@@ -1,4 +1,8 @@
 def parse_args(args: tuple) -> dict:
+    """
+    This funtions parsers arguments of commands
+    """
+
     args = list(args)
     parsed = {}
 

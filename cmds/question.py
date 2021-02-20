@@ -12,9 +12,15 @@ from lib.questionnaire import Questionnaire
 questionnaires = dict()
 
 class question(commands.Cog):
+    """
+    This function creates a questionaire with
+    live results on text channel
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
+    # COMMAND HELP PARSER DATA
     command = "question"
     aliases = ["pytanie", "ankieta", "q"]
     arguments = [
@@ -79,7 +85,7 @@ class question(commands.Cog):
 
         content += Config.CHOOSE_ANSWER
 
-        # await ctx.message.delete()
+        await ctx.message.delete()
 
         embed = discord.Embed()
         embed.color = Config.MAIN_COLOR
@@ -93,7 +99,6 @@ class question(commands.Cog):
         for i in range(len(answers)):
             await msg.add_reaction(DiscordEmojis.numbers_unicode[i])
         
-
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         await self.vote_changed(reaction=reaction, user=user, status="add")
@@ -142,6 +147,6 @@ class question(commands.Cog):
 
         return content
 
-# set up extension
+# set up an extension
 def setup(bot):
     bot.add_cog(question(bot))

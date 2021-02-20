@@ -2,6 +2,10 @@ from lib.config import Config
 import discord
 
 async def command_help(ctx, command_class):
+    """
+    This function sends a help for command as reaction for --help or -h argument
+    """
+
     embed = discord.Embed()
     embed.color = Config.MAIN_COLOR
     embed.title = f"**{Config.PREFIX}{command_class.command}**"
@@ -25,6 +29,5 @@ async def command_help(ctx, command_class):
 
     if command_class.example:
         embed.add_field(name=Config.TRANSLATION_EXAMPLE, value=command_class.example, inline=False)
-
 
     await ctx.send(embed=embed)

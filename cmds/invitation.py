@@ -9,9 +9,14 @@ from lib.parse_args import parse_args
 from lib.command_help import command_help
 
 class invitation(commands.Cog):
+    """
+    This function sends bot's invitation link
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
+    # COMMAND HELP PARSER DATA
     command = "invitation"
     aliases = ["zaproszenie", "inv"]
     arguments = [
@@ -36,5 +41,6 @@ class invitation(commands.Cog):
         embed.set_thumbnail(url=Config.INVITATION_ICON)
         await ctx.send(embed=embed)
 
+# set up an extension
 def setup(bot):
     bot.add_cog(invitation(bot))

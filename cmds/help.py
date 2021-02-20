@@ -9,9 +9,15 @@ from lib.parse_args import parse_args
 from lib.command_help import command_help
 
 class help(commands.Cog):
+    """
+    This function sends all commands and them 
+    descriptions as embed message
+    """
+
     def __init__(self, bot):
         self.bot = bot
 
+    # COMMAND HELP PARSER DATA
     command = "help"
     aliases = ["pomoc"]
     arguments = [
@@ -24,7 +30,6 @@ class help(commands.Cog):
     @commands.command(name=command, aliases=aliases)
     async def _help(self, ctx, *args):
         args = parse_args(args)
-        print(args)
 
         if args.get("help") or args.get("h"):
             await command_help(ctx, help)
@@ -48,6 +53,6 @@ class help(commands.Cog):
         embed.set_thumbnail(url=Config.INFO_ICON)
         await ctx.send(embed=embed)
 
-# set up extension
+# set up an extension
 def setup(bot):
     bot.add_cog(help(bot))

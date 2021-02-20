@@ -2,6 +2,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Questionnaire:
+    """
+    Questionaire dataclass
+    """
+
     answers_count: list
     channel_id: str
     result_msg_id: str
