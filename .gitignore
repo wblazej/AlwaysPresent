@@ -7,3 +7,6 @@ __pycache__/
 
 # vscode
 /.vscode
+
+# others
+parse_nick_tests.py
