@@ -15,7 +15,7 @@ if __name__ == "__main__":
     print("Loading...")
 
     for file in listdir("cmds"):
-        if '.py' in file:
+        if file.split('.')[-1] == "py":
             name = file.replace('.py', '')
             bot.load_extension(f"cmds.{name}")
 

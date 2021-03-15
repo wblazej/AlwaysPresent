@@ -37,7 +37,7 @@ class help(commands.Cog):
         
         content = ""
         for file in listdir("cmds"):
-            if '.py' in file:
+            if file.split('.')[-1] == "py":
                 name = file.replace('.py', '')
                 command_file = importlib.import_module(f'cmds.{name}')
                 command = getattr(command_file, name)
