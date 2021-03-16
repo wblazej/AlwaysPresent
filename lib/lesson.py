@@ -1,5 +1,8 @@
 import discord
 from datetime import datetime
+from datetime import timedelta
+from math import floor
+import pytz
 
 # libs
 from lib.config import Config
@@ -19,7 +22,9 @@ class Lesson:
 
     async def begin_lesson(self):
         self.students = []
-        self.started = datetime.now().timestamp()
+
+        tz = pytz.timezone('Europe/Warsaw')
+        self.started = datetime.now(tz).timestamp()
 
         embed = self.generate_embed()
         channel = self.bot.get_channel(self.channel)
@@ -34,12 +39,16 @@ class Lesson:
         return self.msg_id
 
     async def check(self, user_id: int):
-        self.students.append(user_id)
-        to_edit = await self.bot.get_channel(self.channel).fetch_message(self.msg_id)
-        await to_edit.edit(embed=self.generate_embed())
+        if self.time_left() > 0:
+            self.students.append(user_id)
+            await self.reload()
 
     async def uncheck(self, user_id: int):
-        self.students.pop(self.students.index(user_id))
+        if self.time_left() > 0:
+            self.students.pop(self.students.index(user_id))
+            await self.reload()
+
+    async def reload(self):
         to_edit = await self.bot.get_channel(self.channel).fetch_message(self.msg_id)
         await to_edit.edit(embed=self.generate_embed())
 
@@ -63,21 +72,12 @@ class Lesson:
             content += f"{Config.TRANSLATION_TEACHER} **{teacher_dispaly_name}**\n"
 
         if self.time:
-            minutes_passed = round((datetime.now() - datetime.fromtimestamp(self.started)).total_seconds() / 60)
-            minutes_left = self.time - minutes_passed
-
-            if minutes_left <= 0:
-                content += f"**{Config.TRANSLATION_LESSON_FINISHED}**"
-            else:
-                minutes_left_str = ""
-                if minutes_left == 1: 
-                    minutes_left_str = f"{minutes_left} {Config.TRANSLATION_MINUTE}"
-                elif minutes_left > 1 and minutes_left < 5:
-                    minutes_left_str = f"{minutes_left} {Config.TRANSLATION_MINUTES2}"
-                else:
-                    minutes_left_str = f"{minutes_left} {Config.TRANSLATION_MINUTES1}"
-
-                content += f"{Config.TRANSLATION_LEFT} **{minutes_left_str}**\n"
+            end_time = datetime.fromtimestamp(self.started + (60 * self.time))
+            hour = end_time.hour
+            minute = end_time.minute
+            if hour < 10: hour = f"0{hour}"
+            if minute < 10: minute = f"0{minute}"
+            content += f"{Config.TRANSLATION_LESSON_END} **{hour}:{minute}**\n"
 
         content += f"\n{Config.LESSON_PRESENCE_INFORMATION}\n"
 
@@ -97,3 +97,7 @@ class Lesson:
         embed.description = content
 
         return embed
+
+    def time_left(self):
+        tz = pytz.timezone('Europe/Warsaw')
+        return (self.started + (60 * self.time)) - datetime.now(tz).timestamp()

@@ -47,11 +47,7 @@ class Config:
     TRANSLATION_TEACHER             = "Nauczyciel"
     TRANSLATION_LEADER              = "Prowadzący"
     TRANSLATION_STARTED             = "Rozpoczęto"
-    TRANSLATION_LEFT                = "Pozostało"
-    TRANSLATION_MINUTES1            = "minut"
-    TRANSLATION_MINUTES2            = "minuty"
-    TRANSLATION_MINUTE              = "minuta"
-    TRANSLATION_LESSON_FINISHED     = "Lekcja zakończona"
+    TRANSLATION_LESSON_END          = "Koniec lekcji"
     TRANSLATION_PRESENCE_LIST       = "Lista obecności"
 
     # Messages
