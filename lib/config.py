@@ -1,4 +1,5 @@
 class Config:
+    # General
     PREFIX                          = "&"
     VERSION                         = "2.0"
     INVITATION                      = "https://discord.com/api/oauth2/authorize?client_id=776565552289153024&permissions=486464&scope=bot"
@@ -66,7 +67,32 @@ class Config:
     TIME_INTEGER_REQIURED           = "Czas powinien być liczbą całkowitą podaną w minutach"
     LESSON_PRESENCE_INFORMATION     = "Kliknij reakcję poniżej, aby wpisać się na listę obecności"
 
-    # others
+    # Emojis
+    PRESENCE_EMOJI                  = "👋"
+    DISCORD_EMOJIS_NUMBERS          = [
+        ':one:',
+        ':two:',
+        ':three:',
+        ':four:',
+        ':five:',
+        ':six:',
+        ':seven:',
+        ':eight:',
+        ':nine:'
+    ]
+    DISCORD_EMOJIS_NUMBERS_UNICODE  = [
+        '\U00000031\U000020E3',
+        '\U00000032\U000020E3',
+        '\U00000033\U000020E3',
+        '\U00000034\U000020E3',
+        '\U00000035\U000020E3',
+        '\U00000036\U000020E3',
+        '\U00000037\U000020E3',
+        '\U00000038\U000020E3',
+        '\U00000039\U000020E3'
+    ]
+
+    # Permissions
     PERMISSIONS_CODE                = 486464
     PERMISSIONS_LIST                = [
         "Czytanie wiadomości",
@@ -79,4 +105,3 @@ class Config:
         "Dodawanie reakcji",
         "Wyświetlanie kanałów"
     ]
-    PRESENCE_EMOJI = "👋"

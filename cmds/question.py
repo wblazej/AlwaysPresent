@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from lib.discord_emojis import DiscordEmojis
 
 # libs
 from lib.parse_args import parse_args
@@ -81,7 +80,7 @@ class question(commands.Cog):
 
         content = ''
         for i in range(len(answers)):
-            content += f'{DiscordEmojis.numbers[i]} {answers[i]}\n'
+            content += f'{Config.DISCORD_EMOJIS_NUMBERS[i]} {answers[i]}\n'
 
         content += Config.CHOOSE_ANSWER
 
@@ -98,7 +97,7 @@ class question(commands.Cog):
         questionnaires[msg.id] = Questionnaire([0]*len(answers), ctx.channel.id, result_msg.id)
 
         for i in range(len(answers)):
-            await msg.add_reaction(DiscordEmojis.numbers_unicode[i])
+            await msg.add_reaction(Config.DISCORD_EMOJIS_NUMBERS_UNICODE[i])
         
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
@@ -133,7 +132,7 @@ class question(commands.Cog):
         content = f'**Odpowiedzi: {sum(answers_count)}**\n'
 
         for i in range(len(answers_count)):
-            content += f'{DiscordEmojis.numbers[i]} '
+            content += f'{Config.DISCORD_EMOJIS_NUMBERS[i]} '
 
             try:
                 persentage = round(answers_count[i] / sum(answers_count) * 100, 2)
