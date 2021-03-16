@@ -50,7 +50,7 @@ class help(commands.Cog):
         embed.color = Config.MAIN_COLOR
         embed.title = "**POMOC**"
         embed.description = content
-        embed.set_thumbnail(url=Config.INFO_ICON)
+        embed.set_thumbnail(url=Config.HELP_ICON)
         await ctx.send(embed=embed)
 
 # set up an extension

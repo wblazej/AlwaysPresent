@@ -91,6 +91,7 @@ class question(commands.Cog):
         embed.color = Config.MAIN_COLOR
         embed.title = f"**{__question}**"
         embed.description = content
+        embed.set_thumbnail(url=Config.QUESTION_ICON)
         msg = await ctx.send(embed=embed)
 
         result_msg = await ctx.send(self.generate_result_content([0]*len(answers)))

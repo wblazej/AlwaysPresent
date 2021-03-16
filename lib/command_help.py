@@ -11,7 +11,7 @@ async def command_help(ctx, command_class):
     embed.title = f"**{Config.PREFIX}{command_class.command}**"
     v = f"{command_class.description[:1].upper()}{command_class.description[1:]}"
     embed.add_field(name=Config.TRANSLATION_DESCRIPTION, value=v, inline=True)
-    embed.set_thumbnail(url=Config.INFO_ICON)
+    embed.set_thumbnail(url=Config.HELP_ICON)
 
     if len(command_class.aliases) > 0:
         aliases_content = ""

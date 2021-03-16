@@ -5,7 +5,7 @@ class Config:
 
     # Colors
     ERROR_COLOR                     = 0xc72222
-    MAIN_COLOR                      = 0x0bb556
+    MAIN_COLOR                      = 0x432bcc
 
     # Commands descriptions
     HELP_COMMAND_DESCRIPTION        = "pokazuje listę komend"
@@ -27,8 +27,11 @@ class Config:
     LESSON_COMMAND_EXAMPLE          = f"{PREFIX}lesson -t 60"
 
     # Icons urls
-    INFO_ICON                       = "https://i.imgur.com/TVS0605.png"
-    INVITATION_ICON                 = "https://i.ibb.co/DzTKzMC/oqJl0QT.png"
+    HELP_ICON                       = "https://imgur.com/cvBXTLC.png"
+    INVITATION_ICON                 = "https://imgur.com/vfgmyFA.png"
+    PERMISSIONS_ICON                = "https://imgur.com/YhfUFIS.png"
+    QUESTION_ICON                   = "https://imgur.com/QzypOcB.png"
+    LESSON_ICON                     = "https://imgur.com/y0GQT1k.png"
 
     # Translations
     TRANSLATION_DESCRIPTION         = "Opis"
@@ -38,6 +41,7 @@ class Config:
     TRANSLATION_EXAMPLE             = "Przykład użycia"
     TRANSLATION_PERMISSIONS         = "Uprawnienia bota"
     TRANSLATION_PERMISSIONS_CODE    = "Kod uprawnień"
+    TRANSLATION_LESSON              = "Lekcja"
 
     # Messages
     UNKNOWN_COMMAND                 = f"Nieprawidłowa komenda. Wpisz **{PREFIX}help**"

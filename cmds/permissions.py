@@ -38,6 +38,7 @@ class permissions(commands.Cog):
         embed = discord.Embed()
         embed.color = Config.MAIN_COLOR
         embed.title = Config.TRANSLATION_PERMISSIONS
+        embed.set_thumbnail(url=Config.PERMISSIONS_ICON)
 
         content = f"{Config.TRANSLATION_PERMISSIONS_CODE}: {Config.PERMISSIONS_CODE}\n\n"
 
