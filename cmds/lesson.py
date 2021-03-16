@@ -7,6 +7,9 @@ from lib.parse_args import parse_args
 from lib.command_help import command_help
 from lib.config import Config
 from lib.error import send_error
+from lib.lesson import Lesson
+
+lessons = dict()
 
 class lesson(commands.Cog):
     """
@@ -42,14 +45,55 @@ class lesson(commands.Cog):
         if args.get("help") or args.get("h"):
             await command_help(ctx, lesson)
             return
+
+        time = None
+        if args.get("time"):
+            time = args['time']['value']
+        elif args.get("t"):
+            time = args['t']['value']
+
+        if time:
+            try:
+                time = int(time)
+            except ValueError:
+                await send_error(ctx, Config.TIME_INTEGER_REQIURED)
+                return
+
+        practice = False
+        if args.get("practice") or args.get("p"):
+            practice = True
+
+        no_mention = False
+        if args.get("no-mention") or args.get("n"):
+            no_mention = True
+
+        await ctx.message.delete()
+
+        new_lesson = Lesson(bot=self.bot,
+                            teacher=ctx.author.id,
+                            channel=ctx.channel.id,
+                            guild=ctx.guild.id,
+                            time=time,
+                            practice=practice,
+                            no_mention=no_mention)
+
+        lessons[await new_lesson.begin_lesson()] = new_lesson
         
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
-        pass
+        if user.bot:
+            return
+
+        if reaction.message.id in lessons.keys():
+            await lessons[reaction.message.id].check(user.id)
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):
-        pass
+        if user.bot:
+            return
+
+        if reaction.message.id in lessons.keys():
+            await lessons[reaction.message.id].uncheck(user.id)
 
 # set up an extension
 def setup(bot):

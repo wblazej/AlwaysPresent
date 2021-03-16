@@ -42,6 +42,16 @@ class Config:
     TRANSLATION_PERMISSIONS         = "Uprawnienia bota"
     TRANSLATION_PERMISSIONS_CODE    = "Kod uprawnień"
     TRANSLATION_LESSON              = "Lekcja"
+    TRANSLATION_PRACTICE            = "Praktyka"
+    TRANSLATION_TEACHER             = "Nauczyciel"
+    TRANSLATION_LEADER              = "Prowadzący"
+    TRANSLATION_STARTED             = "Rozpoczęto"
+    TRANSLATION_LEFT                = "Pozostało"
+    TRANSLATION_MINUTES1            = "minut"
+    TRANSLATION_MINUTES2            = "minuty"
+    TRANSLATION_MINUTE              = "minuta"
+    TRANSLATION_LESSON_FINISHED     = "Lekcja zakończona"
+    TRANSLATION_PRESENCE_LIST       = "Lista obecności"
 
     # Messages
     UNKNOWN_COMMAND                 = f"Nieprawidłowa komenda. Wpisz **{PREFIX}help**"
@@ -53,7 +63,10 @@ class Config:
     TWO_ANSWERS_REQUIRED            = "Pytanie musi zawierać conajmniej dwie odpowiedzi"
     MAX_NINE_ANSWERS                = "Pytanie może mieć maksymalnie 9 odpowiedzi"
     CHOOSE_ANSWER                   = "\nWybierz odpowiedź, klikając w reakcję"
+    TIME_INTEGER_REQIURED           = "Czas powinien być liczbą całkowitą podaną w minutach"
+    LESSON_PRESENCE_INFORMATION     = "Kliknij reakcję poniżej, aby wpisać się na listę obecności"
 
+    # others
     PERMISSIONS_CODE                = 486464
     PERMISSIONS_LIST                = [
         "Czytanie wiadomości",
@@ -66,3 +79,4 @@ class Config:
         "Dodawanie reakcji",
         "Wyświetlanie kanałów"
     ]
+    PRESENCE_EMOJI = "👋"
