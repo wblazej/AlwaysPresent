@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from lib.discord_emojis import DiscordEmojis
 
 # libs
 from lib.parse_args import parse_args
