@@ -1,8 +1,15 @@
+import discord
+
 class Config:
     # General
     PREFIX                          = "&"
     VERSION                         = "2.0"
     INVITATION                      = "https://discord.com/api/oauth2/authorize?client_id=776565552289153024&permissions=486464&scope=bot"
+    LANGUAGE                        = "Python v3.8"
+    LIBRARY                         = f"Dicord.py v{discord.__version__}"
+    REPO                            = "https://github.com/wblazej/AlwaysPresent"
+    RUNNING_ON                      = "Docker v20.10.3"
+    AUTHOR                          = "Błażej Wrzosok"
 
     # Colors
     ERROR_COLOR                     = 0xc72222
@@ -14,6 +21,7 @@ class Config:
     QUESTION_COMMAND_DESCRIPTION    = "tworzy ankietę z wynikami na żywo. Pytanie i odpowiedzi zapisz w cudzysłowiu"
     LESSON_COMMAND_DESCRIPTION      = "rozpoczyna lekcję na kanale tekstowym"
     PERMISSIONS_COMMAND_DESCRIPTION = "wyświetla uprawnienia, jakie bot powinien posiadać"
+    BOT_COMMAND_DESCRIPTION         = "pokazuje informacje o bocie"
 
     # Commands arguments descriptions
     HELP_ARGUMENT_DESCRIPTION       = "pokazuje pomoc do komendy"
@@ -33,6 +41,7 @@ class Config:
     PERMISSIONS_ICON                = "https://imgur.com/YhfUFIS.png"
     QUESTION_ICON                   = "https://imgur.com/QzypOcB.png"
     LESSON_ICON                     = "https://imgur.com/y0GQT1k.png"
+    BOT_ICON                        = "https://imgur.com/iHhNdyD.png"
 
     # Translations
     TRANSLATION_DESCRIPTION         = "Opis"
@@ -49,6 +58,13 @@ class Config:
     TRANSLATION_STARTED             = "Rozpoczęto"
     TRANSLATION_LESSON_END          = "Koniec lekcji"
     TRANSLATION_PRESENCE_LIST       = "Lista obecności"
+    TRANSLATION_BOT_INFO            = "Informacje o bocie"
+    TRANSLATION_LANGUAGE            = "Język"
+    TRANSLATION_LIBRARY             = "Biblioteka"
+    TRNASLATION_VERSION             = "Wersja"
+    TRANSLATION_REPOSITORY          = "Repozytorium"
+    TRANSLATION_RUNNING_ON          = "Uruchomiony na"
+    TRANSLATION_AUTHOR              = "Autor"
 
     # Messages
     UNKNOWN_COMMAND                 = f"Nieprawidłowa komenda. Wpisz **{PREFIX}help**"
@@ -62,6 +78,7 @@ class Config:
     CHOOSE_ANSWER                   = "\nWybierz odpowiedź, klikając w reakcję"
     TIME_INTEGER_REQIURED           = "Czas powinien być liczbą całkowitą podaną w minutach"
     LESSON_PRESENCE_INFORMATION     = "Kliknij reakcję poniżej, aby wpisać się na listę obecności"
+    BOT_DESCRIPTION                  = "Bot do szybkiego i wygodnego sprawdzania obecności na lekcjach online, prowadzonych na Discordzie"
 
     # Emojis
     PRESENCE_EMOJI                  = "👋"
