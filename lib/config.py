@@ -10,6 +10,7 @@ class Config:
     REPO                            = "https://github.com/wblazej/AlwaysPresent"
     RUNNING_ON                      = "Docker v20.10.3"
     AUTHOR                          = "Błażej Wrzosok"
+    ICONS_AUTHOR                    = "https://icons8.com"
 
     # Colors
     ERROR_COLOR                     = 0xc72222
@@ -65,6 +66,7 @@ class Config:
     TRANSLATION_REPOSITORY          = "Repozytorium"
     TRANSLATION_RUNNING_ON          = "Uruchomiony na"
     TRANSLATION_AUTHOR              = "Autor"
+    TRANSLATION_ICONS               = "Ikony"
 
     # Messages
     UNKNOWN_COMMAND                 = f"Nieprawidłowa komenda. Wpisz **{PREFIX}help**"

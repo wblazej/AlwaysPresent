@@ -39,6 +39,7 @@ class _bot(commands.Cog):
         embed.add_field(name=Config.TRANSLATION_LIBRARY, value=Config.LIBRARY, inline=True)
         embed.add_field(name=Config.TRANSLATION_RUNNING_ON, value=Config.RUNNING_ON, inline=True)
         embed.add_field(name=Config.TRANSLATION_AUTHOR, value=Config.AUTHOR, inline=True)
+        embed.add_field(name=Config.TRANSLATION_ICONS, value=Config.ICONS_AUTHOR, inline=True)
         embed.add_field(name=Config.TRANSLATION_REPOSITORY, value=Config.REPO, inline=True)
 
         await ctx.send(embed=embed)
