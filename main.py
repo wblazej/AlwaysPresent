@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from decouple import config
+import decouple
 from os import listdir
 
 # libs
@@ -46,4 +47,7 @@ async def on_command_error(ctx, error):
     else:
         raise error
 
-bot.run(config("TOKEN"), bot=True, reconnect=True)
+try:
+    bot.run(config("TOKEN"), bot=True, reconnect=True)
+except decouple.UndefinedValueError:
+    print(f"\033[1m\033[91mERROR\033[0m Token hasn't been provided in file \033[1m.env\033[0m")
