@@ -6,7 +6,7 @@ class Config:
     VERSION                         = "2.0"
     INVITATION                      = "https://discord.com/api/oauth2/authorize?client_id=776565552289153024&permissions=486464&scope=bot"
     LANGUAGE                        = "Python v3.8"
-    LIBRARY                         = f"Dicord.py v{discord.__version__}"
+    LIBRARY                         = f"dicord.py v{discord.__version__}"
     REPO                            = "https://github.com/wblazej/AlwaysPresent"
     RUNNING_ON                      = "Docker v20.10.3"
     AUTHOR                          = "Błażej Wrzosok"
@@ -74,7 +74,7 @@ class Config:
     SERVER_COMMAND                  = "Tę komendę można wykonywać jedynie na serwerze"
     WRONG_CONFIG                    = f'Bot nie ma permisji do wykonania jakieś czynności, która jest niezbędna do poprawnego działania. Wpisz **{PREFIX}permissions**, aby otrzymać listę wymaganych uprawnień'
     HELP_INFO                       = "Wpisz nazwę komendy z argumentem `--help`, aby dowiedzieć się więcej o komendzie"
-    NO_QUESTION                     = "Pytnie nie zostało podane"
+    NO_QUESTION                     = "Pytanie nie zostało podane"
     TWO_ANSWERS_REQUIRED            = "Pytanie musi zawierać conajmniej dwie odpowiedzi"
     MAX_NINE_ANSWERS                = "Pytanie może mieć maksymalnie 9 odpowiedzi"
     CHOOSE_ANSWER                   = "\nWybierz odpowiedź, klikając w reakcję"
