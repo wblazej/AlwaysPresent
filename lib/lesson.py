@@ -39,14 +39,18 @@ class Lesson:
         return self.msg_id
 
     async def check(self, user_id: int):
-        if self.time_left() > 0:
-            self.students.append(user_id)
-            await self.reload()
+        if self.time and self.time_left() <= 0:
+            return
+
+        self.students.append(user_id)
+        await self.reload()
 
     async def uncheck(self, user_id: int):
-        if self.time_left() > 0:
-            self.students.pop(self.students.index(user_id))
-            await self.reload()
+        if self.time and self.time_left() <= 0:
+            return
+
+        self.students.pop(self.students.index(user_id))
+        await self.reload()
 
     async def reload(self):
         to_edit = await self.bot.get_channel(self.channel).fetch_message(self.msg_id)
