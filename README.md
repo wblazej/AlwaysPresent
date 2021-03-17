@@ -1,5 +1,8 @@
 # AlwaysPresent
-Bot for quick and comfortable checking presence on online lessons on Discord
+Bot for quick and comfortable checking presence on online lessons on Discord. <br><br>
+
+The bot uses polish database called PESEL for converting Discord servers nicks to names and surnames. That helps to sort them alphabetically which is easy to check presence quickly. <br>
+Example: from `19. Błażej Wrzosok Kl. 2c` to `Wrzosok Błażej`
 
 ## Usage
 **Requirements** <br>
