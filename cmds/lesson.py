@@ -84,14 +84,17 @@ class lesson(commands.Cog):
             return
 
         if reaction.message.id in lessons.keys():
-            await lessons[reaction.message.id].check(user.id)
+            if reaction.emoji == Config.PRESENCE_EMOJI:
+                await lessons[reaction.message.id].check(user.id)
+            else:
+                await reaction.remove(user)
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):
         if user.bot:
             return
 
-        if reaction.message.id in lessons.keys():
+        if reaction.message.id in lessons.keys() and reaction.emoji == Config.PRESENCE_EMOJI:
             await lessons[reaction.message.id].uncheck(user.id)
 
 # set up an extension
