@@ -3,6 +3,7 @@ from discord.ext import commands
 from decouple import config
 import decouple
 from os import listdir
+from lib.format_date import get_formated_warsaw_datetime
 
 # libs
 from lib.config import Config
@@ -46,6 +47,16 @@ async def on_command_error(ctx, error):
             raise error
     else:
         raise error
+
+@bot.event
+async def on_command(ctx):
+    username = ctx.author.display_name
+    guild_name = ctx.guild.name
+    command = ctx.message.content
+    date = get_formated_warsaw_datetime()
+
+    print(f"\033[94m\033[1mINFO\033[0m User \033[1m{username}\033[0m executed command\
+ \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m | ({date})")
 
 try:
     bot.run(config("TOKEN"), bot=True, reconnect=True)
