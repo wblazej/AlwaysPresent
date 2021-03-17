@@ -63,7 +63,7 @@ class lesson(commands.Cog):
             practice = True
 
         no_mention = False
-        if args.get("no-mention") or args.get("n"):
+        if args.get("nomention") or args.get("n"):
             no_mention = True
 
         await ctx.message.delete()
