@@ -3,11 +3,12 @@ from discord.ext import commands
 from decouple import config
 import decouple
 from os import listdir
-from lib.format_date import get_formated_warsaw_datetime
 
 # libs
 from lib.config import Config
 from lib.error import send_error
+from lib.format_date import get_formated_warsaw_datetime
+from lib.logging import Logging
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=Config.PREFIX, intents=intents)
@@ -55,10 +56,9 @@ async def on_command(ctx):
     command = ctx.message.content
     date = get_formated_warsaw_datetime()
 
-    print(f"\033[94m\033[1mINFO\033[0m User \033[1m{username}\033[0m executed command\
- \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m | ({date})")
+    Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m | ({date})")
 
 try:
     bot.run(config("TOKEN"), bot=True, reconnect=True)
 except decouple.UndefinedValueError:
-    print(f"\033[1m\033[91mERROR\033[0m Token hasn't been provided in file \033[1m.env\033[0m")
+    Logging.error(f"Token hasn't been provided in file \033[1m.env\033[0m")
