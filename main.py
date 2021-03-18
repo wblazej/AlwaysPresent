@@ -51,10 +51,16 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_command(ctx):
     username = ctx.author.display_name
-    guild_name = ctx.guild.name
     command = ctx.message.content
 
-    Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m")
+    guild_name = None
+    if ctx.guild:
+        guild_name = ctx.guild.name
+
+    if guild_name:
+        Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m")
+    else:
+        Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on \033[1mDM\033[0m")
 
 try:
     bot.run(config("TOKEN"), bot=True, reconnect=True)
