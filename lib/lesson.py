@@ -6,8 +6,8 @@ import pytz
 
 # libs
 from lib.config import Config
-from lib.format_date import get_formated_warsaw_datetime
 from lib.parse_nick import parse_nick
+from lib.format_date import FormatDate
 
 class Lesson:
     def __init__(self, bot, teacher: int, channel: int, guild: int, time: any = None, practice: bool = False, no_mention: bool = False):
@@ -22,9 +22,7 @@ class Lesson:
 
     async def begin_lesson(self):
         self.students = []
-
-        tz = pytz.timezone('Europe/Warsaw')
-        self.started = datetime.now(tz).timestamp()
+        self.started = FormatDate.get_current_datetime()
 
         embed = self.generate_embed()
         channel = self.bot.get_channel(self.channel)
@@ -76,12 +74,8 @@ class Lesson:
             content += f"{Config.TRANSLATION_TEACHER} **{teacher_dispaly_name}**\n"
 
         if self.time:
-            end_time = datetime.fromtimestamp(self.started + (60 * self.time))
-            hour = end_time.hour
-            minute = end_time.minute
-            if hour < 10: hour = f"0{hour}"
-            if minute < 10: minute = f"0{minute}"
-            content += f"{Config.TRANSLATION_LESSON_END} **{hour}:{minute}**\n"
+            end_time = self.started + timedelta(minutes=self.time)
+            content += f"{Config.TRANSLATION_LESSON_END} **{FormatDate.get_formated_time(end_time)}**\n"
 
         content += f"\n{Config.LESSON_PRESENCE_INFORMATION}\n"
 

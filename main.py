@@ -7,7 +7,6 @@ from os import listdir
 # libs
 from lib.config import Config
 from lib.error import send_error
-from lib.format_date import get_formated_warsaw_datetime
 from lib.logging import Logging
 
 intents = discord.Intents.all()
@@ -54,9 +53,8 @@ async def on_command(ctx):
     username = ctx.author.display_name
     guild_name = ctx.guild.name
     command = ctx.message.content
-    date = get_formated_warsaw_datetime()
 
-    Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m | ({date})")
+    Logging.info(f"User \033[1m{username}\033[0m executed command \033[1m{command}\033[0m on server \033[1m{guild_name}\033[0m")
 
 try:
     bot.run(config("TOKEN"), bot=True, reconnect=True)

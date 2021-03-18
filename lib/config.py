@@ -11,6 +11,7 @@ class Config:
     RUNNING_ON                      = "Docker v20.10.3"
     AUTHOR                          = "Błażej Wrzosok"
     ICONS_AUTHOR                    = "https://icons8.com"
+    TIMEZONE                        = "Europe/Warsaw"
 
     # Colors
     ERROR_COLOR                     = 0xc72222
