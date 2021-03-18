@@ -3,7 +3,6 @@ from datetime import datetime
 
 # libs
 from lib.config import Config
-# from lib.logging import Logging
 
 class FormatDate:
     @staticmethod
@@ -16,12 +15,8 @@ class FormatDate:
 
     @staticmethod
     def get_current_datetime():
-        try:
-            tz = pytz.timezone(Config.TIMEZONE)
-            return datetime.now(tz)
-        except pytz.exceptions.UnknownTimeZoneError:
-            # Logging.error("Incorrect timezone has been provided in config file")
-            pass
+        tz = pytz.timezone(Config.TIMEZONE)
+        return datetime.now(tz)
 
     @staticmethod
     def get_formated_datetime(dt: datetime = None):
