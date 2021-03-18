@@ -65,7 +65,7 @@ class Lesson:
         embed.color = Config.MAIN_COLOR
         embed.set_thumbnail(url=Config.LESSON_ICON)
 
-        content = f"{Config.TRANSLATION_STARTED} **{get_formated_warsaw_datetime()}**\n"
+        content = f"{Config.TRANSLATION_STARTED} **{FormatDate.get_formated_datetime(self.started)}**\n"
 
         teacher_dispaly_name = self.bot.get_guild(self.guild).get_member(self.teacher).display_name
         if self.practice:
@@ -97,5 +97,5 @@ class Lesson:
         return embed
 
     def time_left(self):
-        tz = pytz.timezone('Europe/Warsaw')
-        return (self.started + (60 * self.time)) - datetime.now(tz).timestamp()
+        end_time = self.started + timedelta(minutes=self.time)
+        return (end_time - FormatDate.get_current_datetime()).total_seconds()

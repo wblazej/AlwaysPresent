@@ -133,16 +133,16 @@ class Config:
         6: "niedziela"
     }
     MONTHS                          = {
-        1: "Styczeń",
-        2: "Luty",
-        3: "Marzec",
-        4: "Kwiecień",
-        5: "Maj",
-        6: "Czerwiec",
-        7: "Lipiec",
-        8: "Sierpień",
-        9: "Wrzesień",
-        10: "Październik",
-        11: "Listopad",
-        12: "Grudzień"
+        1: "stycznia",
+        2: "lutego",
+        3: "marca",
+        4: "kwietnia",
+        5: "maja",
+        6: "czerwca",
+        7: "lipca",
+        8: "sierpnia",
+        9: "września",
+        10: "października",
+        11: "listopada",
+        12: "grudnia"
     }
