@@ -10,10 +10,11 @@ Example: from `19. Błażej Wrzosok Kl. 2c` to `Wrzosok Błażej`
 ```
 git clone https://github.com/wblazej/AlwaysPresent
 cd AlwaysPresent
-echo "TOKEN=<your_bot_token>" > .env
+echo "TOKEN=your_bot_token" > .env
 docker build -t alwayspresent .
 docker run -d -t alwayspresent
 ```
+When the bot is ready, run `&help` command on discord channel to see list of commands.
 If you don't know how to setup discord application and get a token, see [discord docs](https://discord.com/developers/docs/intro)
 
 
