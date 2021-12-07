@@ -29,7 +29,7 @@ async def on_ready():
     print(f'{bot.user.name} bot: v{Config.VERSION}')
     print("\n==============================\n")
 
-    await bot.change_presence(activity=discord.Game(name="&help"))
+    await bot.change_presence(activity=discord.Game(name=f"{Config.PREFIX}help"))
 
 # handle errors
 @bot.event
