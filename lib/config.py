@@ -3,12 +3,10 @@ import discord
 class Config:
     # General
     PREFIX                          = "&"
-    VERSION                         = "2.0"
+    VERSION                         = "2.1"
     INVITATION                      = "https://discord.com/api/oauth2/authorize?client_id=776565552289153024&permissions=486464&scope=bot"
-    LANGUAGE                        = "Python v3.8"
     LIBRARY                         = f"dicord.py v{discord.__version__}"
     REPO                            = "https://github.com/wblazej/AlwaysPresent"
-    RUNNING_ON                      = "Docker v20.10.3"
     AUTHOR                          = "Błażej Wrzosok"
     ICONS_AUTHOR                    = "https://icons8.com"
     TIMEZONE                        = "Europe/Warsaw"
@@ -65,11 +63,8 @@ class Config:
     TRANSLATION_LESSON_END          = "Koniec lekcji"
     TRANSLATION_PRESENCE_LIST       = "Lista obecności"
     TRANSLATION_BOT_INFO            = "Informacje o bocie"
-    TRANSLATION_LANGUAGE            = "Język"
     TRANSLATION_LIBRARY             = "Biblioteka"
     TRNASLATION_VERSION             = "Wersja"
-    TRANSLATION_REPOSITORY          = "Repozytorium"
-    TRANSLATION_RUNNING_ON          = "Uruchomiony na"
     TRANSLATION_AUTHOR              = "Autor"
     TRANSLATION_ICONS               = "Ikony"
 
