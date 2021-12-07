@@ -3,15 +3,14 @@ import discord
 class Config:
     # General
     PREFIX                          = "&"
-    VERSION                         = "2.0"
+    VERSION                         = "2.1"
     INVITATION                      = "https://discord.com/api/oauth2/authorize?client_id=776565552289153024&permissions=486464&scope=bot"
-    LANGUAGE                        = "Python v3.8"
     LIBRARY                         = f"dicord.py v{discord.__version__}"
     REPO                            = "https://github.com/wblazej/AlwaysPresent"
-    RUNNING_ON                      = "Docker v20.10.3"
     AUTHOR                          = "Błażej Wrzosok"
     ICONS_AUTHOR                    = "https://icons8.com"
     TIMEZONE                        = "Europe/Warsaw"
+    ADMIN_ID                        = 675768687310929940
 
     # Colors
     ERROR_COLOR                     = 0xc72222
@@ -24,6 +23,7 @@ class Config:
     LESSON_COMMAND_DESCRIPTION      = "rozpoczyna lekcję na kanale tekstowym"
     PERMISSIONS_COMMAND_DESCRIPTION = "wyświetla uprawnienia, jakie bot powinien posiadać"
     BOT_COMMAND_DESCRIPTION         = "pokazuje informacje o bocie"
+    STATUS_COMMAND_DESCRIPTION      = "zmienia status bota"
 
     # Commands arguments descriptions
     HELP_ARGUMENT_DESCRIPTION       = "pokazuje pomoc do komendy"
@@ -32,6 +32,8 @@ class Config:
     TIME_ARGUMENT_DESCRIPTION       = "przez ile czasu w minutach można zaznaczyć obecność"
     PRACTICE_ARGUMENT_DESCRIPION    = "zmienia lekcję na praktykę"
     NO_MENTION_ARG_DESCRIPTION      = "wysyła infomację o lekcji bez pingu `@here`"
+    STATUS_ARGUMENT_DESCRIPTION     = "nowy status bota"
+    REMOVE_ARGUMENT_DESCRIPTION     = "usuń aktualny status bota"
 
     # Commands usage examples
     QUESTION_COMMAND_EXAMPLE        = f"{PREFIX}question -q \"Tak czy nie?\" -a1 \"Tak\" -a2 \"Nie\""
@@ -61,11 +63,8 @@ class Config:
     TRANSLATION_LESSON_END          = "Koniec lekcji"
     TRANSLATION_PRESENCE_LIST       = "Lista obecności"
     TRANSLATION_BOT_INFO            = "Informacje o bocie"
-    TRANSLATION_LANGUAGE            = "Język"
     TRANSLATION_LIBRARY             = "Biblioteka"
     TRNASLATION_VERSION             = "Wersja"
-    TRANSLATION_REPOSITORY          = "Repozytorium"
-    TRANSLATION_RUNNING_ON          = "Uruchomiony na"
     TRANSLATION_AUTHOR              = "Autor"
     TRANSLATION_ICONS               = "Ikony"
 
